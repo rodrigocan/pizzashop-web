@@ -39,7 +39,7 @@ export function OrderTableFilters() {
       },
     });
 
-  function handleFilter({ orderId, customerName, status }: OrderFiltersSchema) {
+  function handleFilter({ customerName, orderId, status }: OrderFiltersSchema) {
     setSearchParams((state) => {
       if (orderId) {
         state.set("orderId", orderId);
@@ -88,19 +88,16 @@ export function OrderTableFilters() {
       className="flex items-center gap-2"
     >
       <span className="text-sm font-semibold">Filtros:</span>
-
       <Input
         placeholder="ID do pedido"
         className="h-8 w-auto"
         {...register("orderId")}
       />
-
       <Input
         placeholder="Nome do cliente"
         className="h-8 w-[320px]"
         {...register("customerName")}
       />
-
       <Controller
         name="status"
         control={control}
@@ -127,18 +124,16 @@ export function OrderTableFilters() {
             </Select>
           );
         }}
-      />
-
-      <Button type="submit" variant="secondary" size="xs">
+      ></Controller>
+      <Button variant="secondary" size="xs" type="submit">
         <Search className="mr-2 h-4 w-4" />
         Filtrar resultados
       </Button>
-
       <Button
         onClick={handleClearFilters}
-        type="button"
         variant="outline"
         size="xs"
+        type="button"
       >
         <X className="mr-2 h-4 w-4" />
         Remover filtros
